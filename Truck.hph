@@ -1,0 +1,77 @@
+<?php
+
+require_once 'Vehicule.php';
+
+class Truck extends Vehicule
+
+{
+    public const ALLOWED_ENERGIES = [
+        'fuel',
+        'electric',
+    ];
+
+    private int $capacity;
+    private int $loading;
+
+    public function __construct(string $color, int $nbSeats, string $energy, int $capacity)
+    {
+        parent::__construct($color, $nbSeats);
+        $this->setEnergy($energy);
+        $this->setCapacity($capacity);
+        $this->setLoading($loading = 0);
+    }
+
+    public function setEnergy(string $energy): Truck
+    {   
+        if (in_array($energy, self::ALLOWED_ENERGIES)) {
+
+            $this->energy = $energy;
+        }
+        return $this;  
+    }
+
+    public function getEnergy(): string
+    {
+        return $this->energy;
+    }
+
+    public function setCapacity(int $capacity): int
+    {   
+        return $this->capacity = $capacity;
+        
+    }
+
+    public function getCapacity(): int
+    {
+        return $this->capacity;
+    }
+
+    public function setLoading(int $loading): int
+    {   
+        return $this->loading = $loading;
+        
+    }
+
+    public function getLoading(): int
+    {
+        return $this->loading;
+    }
+    
+    public function loadingControl($loading, $capacity): Truck
+    {   
+
+        $this->$loading;
+        $this->$capacity;
+        if ($loading === $capacity) {
+
+            echo 'The truck is full';
+        } elseif ($loading < $capacity) {
+            echo 'The truck is in filling';
+        } else {
+            echo ' must mot be overfilling'; 
+          }
+        return $this;
+         
+    }
+
+}
